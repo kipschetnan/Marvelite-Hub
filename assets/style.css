@@ -1,3 +1,5 @@
+
+
 .titleContainer {
     background-color: brown;
     padding-bottom: 20px;
@@ -8,8 +10,9 @@
 
 .search {
     margin-top: 40px;
+    margin-left: 10px;
 }
 
 .history {
-    
+    margin-left: 10px;
 }
