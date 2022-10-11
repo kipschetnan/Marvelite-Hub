@@ -3,8 +3,6 @@ const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
 const searchBtn = document.getElementById('search-btn');
 const displayChar = $('#character-display');
-const charName = $('#character-name');
-const characterImg = $('#char-img');
 
 function fetchComics(ID) {
   let comicId = ID;
