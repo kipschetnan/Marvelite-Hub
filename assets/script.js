@@ -2,7 +2,9 @@
 const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
 const searchBtn = document.getElementById('search-btn');
-const displayChar = document.getElementById('character-display');
+const displayChar = $('#character-display');
+const charName = $('#character-name');
+const characterImg = $('#char-img');
 
 function fetchComics(ID) {
   let comicId = ID;
@@ -45,9 +47,8 @@ function fetchMarvel(event) {
         let imageSrc = `${imagePath}/portrait_xlarge.${imageExtension}`
         let characterName = $('<p class="character-name">' + character + '</p>');
         let thumbnail = $(`<img src=${imageSrc}>`);
-        let description = $('<p class="character-desc">' + charDescription + '</p>')
-        console.log(typeof character,typeof charDescription,typeof imagePath,typeof imageExtension);
-        console.log(imageSrc);
+        let description = $('<p class="character-desc">' + charDescription + '</p>');
+        // Append character's name, thumbnail and description on the page
         displayChar.append(characterName);
         displayChar.append(thumbnail);
         displayChar.append(description);
