@@ -16,20 +16,36 @@
         <h1 class="customTitle title column is-half is-offset-5">Marvelite Hub</h1>
 
     </header>
-
-    <section class="columns">
-        <form class="search column is-3">
-            <input id="character-input" class="input bulma-placeholder-mixin" type="text"
-                placeholder="Search for a marvel character">
+    <main class="columns">
+        <section class="column is-3">
+            <form class="search field">
+                <input id="character-input" class="input bulma-placeholder-mixin" type="text"
+                    placeholder="Search for a marvel character">
+                <div class="control">
+                    <button class="button is-danger is-outlined is-fullwidth" id="search-btn">
+                        Search
+                    </button>
+                </div>
+            </form>
+            <hr>
             <div>
-                <button class="button is-danger is-outlined is-fullwidth" id="search-btn">Search</button>
+                <h2 class="history">History</h2>
+                <div class="search-history">
+                    <!-- Search history dynamically insert here -->
+                </div>
             </div>
-        </form>
+        </section>
 
-    </section>
-
-    <h2 class="history">History</h2>
-    <ul class="list-group"></ul>
+        <section class="main-content column is-9">
+            <!-- character name (click event listener, direct to movies display)
+                character thumbnail
+                character description
+            -->
+            <div id="character-display"></div>
+            <!-- List of comics -->
+            <div id="comics-list"></div>
+        </section>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
