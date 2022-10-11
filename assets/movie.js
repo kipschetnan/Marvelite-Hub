@@ -1,13 +1,10 @@
 // Global variables
 const APIKey2 = '5cf37e04';
-const characterInp = $('#character-input');
-const search = $("#search-btn");
 
 //fetch movie info
 function fetchOMDB() {
 
-    var hero = characterInp.val();
-    characterURL = 'http://www.omdbapi.com/?apikey=' + APIKey2 + '&s=' + hero;
+    characterURL = 'http://www.omdbapi.com/?apikey=' + APIKey2 + '&s=thor';
     fetch(characterURL)
       .then(function (response) {
         return response.json();
@@ -17,4 +14,4 @@ function fetchOMDB() {
       });
 }
 
-search.on('click', fetchOMDB);
+$(document).ready(fetchOMDB);
