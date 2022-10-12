@@ -6,6 +6,8 @@ const redirectBtn = document.getElementById('redirect');
 var heroes = JSON.parse(localStorage.getItem('heroArr')) || [];
 const displayChar = $('#character-display');
 const movieBtnEl = document.getElementById('movieBtn');
+const clearHistBtn = document.getElementById('clearHistoryBtn');
+const clearHistDiv = document.getElementById('clear-history');
 
 function fetchComics(ID) {
   let comicId = ID;
@@ -44,13 +46,8 @@ function fetchMarvel(event) {
         // check if user's input can be save in local storage
         if (characterData.data.results.length !== 0){
           heroes.push(heroName)
-        localStorage.setItem("heroArr", JSON.stringify(heroes))
-        buildMenu()
-        }
-        if (characterData.data.results.length !== 0){
-          heroes.push(heroName)
-        localStorage.setItem("heroArr", JSON.stringify(heroes))
-        buildMenu()
+          localStorage.setItem("heroArr", JSON.stringify(heroes))
+          buildMenu()
         }
 
         // append character's name, thumbnail, and description
@@ -79,12 +76,15 @@ function fetchMarvel(event) {
           
         }
         displayButton();
+        clearHistory();
+        
       });
 }
 function buildMenu() {
   $(".search-list").remove()
   var heroArr = JSON.parse(localStorage.getItem("heroArr"));
   console.log(heroArr);
+  
   for (var i = 0; i < heroArr.length; i++) {
     var li = $("<li>").addClass('search-list').text(heroArr[i])
     
@@ -92,6 +92,13 @@ function buildMenu() {
   }
 }
 
+function clearHistory () {
+  clearHistDiv.style.display = 'block';
+  clearHistBtn.onclick = function () {
+    heroes = [];
+  }
+}
+//displays redirect btn
 function displayButton() {
   //displays the button
   redirectBtn.style.display = 'block';
@@ -101,5 +108,6 @@ function displayButton() {
     location.href = "redirect.html";
   };
 }
-// fetchMarvel()
+
 searchBtn.addEventListener('click', fetchMarvel);    
+
