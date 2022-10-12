@@ -39,7 +39,7 @@ function fetchMarvel(event) {
           return;
         }
         console.log(characterData);
-        if (data.data.results.length !== 0){
+        if (characterData.data.results.length !== 0){
           heroes.push(heroName)
         localStorage.setItem("heroArr", JSON.stringify(heroes))
         buildMenu()
