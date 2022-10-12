@@ -80,16 +80,17 @@ function fetchMarvel(event) {
         
       });
 }
-function buildMenu() {
-  $(".list-group-item").remove()
-  var heroArr = JSON.parse(localStorage.getItem("heroArr"));
 
-  for (var i = 0; i < heroArr.length; i++) {
-    var li = $("<li>").addClass("list-group-item").text(heroArr[i])
+// function buildMenu() {
+//   $(".list-group-item").remove()
+//   var heroArr = JSON.parse(localStorage.getItem("heroArr"));
 
-    $(".list-group").append(li)
-  }
-}
+//   for (var i = 0; i < heroArr.length; i++) {
+//     var li = $("<li>").addClass("list-group-item").text(heroArr[i])
+
+//     $(".list-group").append(li)
+//   }
+//}
 
 // fetchMarvel()
 searchBtn.addEventListener('click', fetchMarvel);     
