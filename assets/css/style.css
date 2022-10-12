@@ -1,4 +1,7 @@
-
+body {
+    background-color: blanchedalmond;
+    min-height: 700px;
+}
 
 .titleContainer {
     background-color: brown;
