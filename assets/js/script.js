@@ -2,9 +2,10 @@
 const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
 const searchBtn = document.getElementById('search-btn');
+const searchHistoryEl = document.getElementById('search-history');
 const heroes = [];
-const displayChar = $('#character-display');
 
+const displayChar = $('#character-display');
 
 
 function fetchComics(ID) {
@@ -25,6 +26,7 @@ function fetchComics(ID) {
 // fetch character and subdomain
 function fetchMarvel(event) {
 
+
     event.preventDefault();
     
     let heroName = $('#character-input').val();
@@ -39,6 +41,11 @@ function fetchMarvel(event) {
           return;
         }
         console.log(characterData);
+        if (characterData.data.results.length !== 0){
+          heroes.push(heroName)
+        localStorage.setItem("heroArr", JSON.stringify(heroes))
+        buildMenu()
+        }
         if (characterData.data.results.length !== 0){
           heroes.push(heroName)
         localStorage.setItem("heroArr", JSON.stringify(heroes))
@@ -70,8 +77,8 @@ function fetchMarvel(event) {
           fetchComics(comicID);
         }
         
+        
       });
-
 }
 function buildMenu() {
   $(".list-group-item").remove()
@@ -83,7 +90,6 @@ function buildMenu() {
     $(".list-group").append(li)
   }
 }
-
 
 // fetchMarvel()
 searchBtn.addEventListener('click', fetchMarvel);     
