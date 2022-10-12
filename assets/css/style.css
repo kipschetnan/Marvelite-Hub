@@ -23,3 +23,20 @@ body {
     font-weight: bold;
     margin-left: 110px;
 }
+
+.custom-info {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}
+
+.search-history {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+}
+.search-history li {
+    margin-top: 10px;
+    border: solid;
+    text-align: center;
+    margin-left: 15px;
+}
