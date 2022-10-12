@@ -1,0 +1,25 @@
+body {
+    background-color: blanchedalmond;
+    min-height: 700px;
+}
+
+.titleContainer {
+    background-color: brown;
+    padding-bottom: 20px;
+}
+.customTitle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 30px;
+}
+
+.search {
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.history {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 110px;
+}
