@@ -2,12 +2,18 @@
 const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
 const searchBtn = document.getElementById('search-btn');
+<<<<<<< HEAD:assets/script.js
+var heroes = JSON.parse(localStorage.getItem('heroArr')) || [];
+const displayChar = $('#character-display');
+
+=======
 const searchHistoryEl = document.getElementById('search-history');
 const heroes = [];
 
 const displayChar = $('#character-display');
 
 
+>>>>>>> be3f39afcd2d9c3f9bb84e0735541041b9f9db5e:assets/js/script.js
 function fetchComics(ID) {
   let comicId = ID;
   let getComicURL = `https://gateway.marvel.com:443/v1/public/comics/${comicId}?apikey=447061714da1f776acf1c2d309091175`
@@ -21,6 +27,7 @@ function fetchComics(ID) {
         return;
       }
       console.log(comicData);
+
     })
 }
 // fetch character and subdomain
@@ -41,6 +48,7 @@ function fetchMarvel(event) {
           return;
         }
         console.log(characterData);
+        // check if user's input can be save in local storage
         if (characterData.data.results.length !== 0){
           heroes.push(heroName)
         localStorage.setItem("heroArr", JSON.stringify(heroes))
@@ -76,20 +84,27 @@ function fetchMarvel(event) {
           // display a list of comics
           fetchComics(comicID);
         }
+<<<<<<< HEAD:assets/script.js
+=======
         
         
+>>>>>>> be3f39afcd2d9c3f9bb84e0735541041b9f9db5e:assets/js/script.js
       });
 }
 function buildMenu() {
-  $(".list-group-item").remove()
+  $(".search-list").remove()
   var heroArr = JSON.parse(localStorage.getItem("heroArr"));
-
+  console.log(heroArr);
   for (var i = 0; i < heroArr.length; i++) {
-    var li = $("<li>").addClass("list-group-item").text(heroArr[i])
-
-    $(".list-group").append(li)
+    var li = $("<li>").addClass('search-list').text(heroArr[i])
+    
+    $(".search-history").append(li)
   }
 }
+<<<<<<< HEAD:assets/script.js
+buildMenu();
+=======
 
+>>>>>>> be3f39afcd2d9c3f9bb84e0735541041b9f9db5e:assets/js/script.js
 // fetchMarvel()
 searchBtn.addEventListener('click', fetchMarvel);     
