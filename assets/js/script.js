@@ -2,11 +2,8 @@
 const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
 const searchBtn = document.getElementById('search-btn');
-const searchHistoryEl = document.getElementById('search-history');
-const heroes = [];
-
+var heroes = JSON.parse(localStorage.getItem('heroArr')) || [];
 const displayChar = $('#character-display');
-
 
 function fetchComics(ID) {
   let comicId = ID;
@@ -21,6 +18,7 @@ function fetchComics(ID) {
         return;
       }
       console.log(comicData);
+
     })
 }
 // fetch character and subdomain
@@ -41,6 +39,7 @@ function fetchMarvel(event) {
           return;
         }
         console.log(characterData);
+        // check if user's input can be save in local storage
         if (characterData.data.results.length !== 0){
           heroes.push(heroName)
         localStorage.setItem("heroArr", JSON.stringify(heroes))
@@ -76,21 +75,17 @@ function fetchMarvel(event) {
           // display a list of comics
           fetchComics(comicID);
         }
-        
-        
       });
 }
-
-// function buildMenu() {
-//   $(".list-group-item").remove()
-//   var heroArr = JSON.parse(localStorage.getItem("heroArr"));
-
-//   for (var i = 0; i < heroArr.length; i++) {
-//     var li = $("<li>").addClass("list-group-item").text(heroArr[i])
-
-//     $(".list-group").append(li)
-//   }
-//}
-
+function buildMenu() {
+  $(".search-list").remove()
+  var heroArr = JSON.parse(localStorage.getItem("heroArr"));
+  console.log(heroArr);
+  for (var i = 0; i < heroArr.length; i++) {
+    var li = $("<li>").addClass('search-list').text(heroArr[i])
+    
+    $(".search-history").append(li)
+  }
+}
 // fetchMarvel()
 searchBtn.addEventListener('click', fetchMarvel);     
