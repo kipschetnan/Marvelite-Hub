@@ -2,8 +2,10 @@
 const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
 const searchBtn = document.getElementById('search-btn');
+const redirectBtn = document.getElementById('redirect');
 var heroes = JSON.parse(localStorage.getItem('heroArr')) || [];
 const displayChar = $('#character-display');
+const movieBtnEl = document.getElementById('movieBtn');
 
 function fetchComics(ID) {
   let comicId = ID;
@@ -74,7 +76,9 @@ function fetchMarvel(event) {
           let comicID = splitArray[6];
           // display a list of comics
           fetchComics(comicID);
+          
         }
+        displayButton();
       });
 }
 function buildMenu() {
@@ -87,5 +91,15 @@ function buildMenu() {
     $(".search-history").append(li)
   }
 }
+
+function displayButton() {
+  //displays the button
+  redirectBtn.style.display = 'block';
+
+  //redirects to the other html page
+  movieBtnEl.onclick = function () {
+    location.href = "redirect.html";
+  };
+}
 // fetchMarvel()
-searchBtn.addEventListener('click', fetchMarvel);     
+searchBtn.addEventListener('click', fetchMarvel);    
