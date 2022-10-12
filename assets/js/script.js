@@ -1,7 +1,7 @@
 // Global variables
 const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
-const searchBtn = document.getElementById('search-btn');
+const searchHistoryEl = document.getElementById('search-history');
 const heroes = [];
 const displayChar = $('#character-display');
 
