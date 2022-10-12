@@ -47,3 +47,12 @@ body {
     margin-left: 75%;
     margin-right: 2%;
 }
+ #clear-history {
+    display: none;
+    margin-left: 15px;
+    margin-top: 10px;
+ }
+
+ #clearHistoryBtn {
+    font-weight: bold;
+ }
