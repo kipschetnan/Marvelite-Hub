@@ -104,13 +104,8 @@ function buildHistory() {
 function displayClearHistoryButton () {
   clearHistDiv.style.display = 'block';
   clearHistBtn.onclick = function () {
-<<<<<<< HEAD
-    heroes = [];
-    $(".search-list").remove()
-=======
     history = [];
     buildHistory()
->>>>>>> 5413f3678015470cd273b8faa147508c8b769d92
   }
 }
 //displays redirect btn
