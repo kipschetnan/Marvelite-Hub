@@ -3,11 +3,12 @@ const APIkey = '447061714da1f776acf1c2d309091175'
 const characterInput = document.getElementById('character-input');
 const searchBtn = document.getElementById('search-btn');
 const redirectBtn = document.getElementById('redirect');
-var heroes = JSON.parse(localStorage.getItem('heroArr')) || [];
+let history = JSON.parse(localStorage.getItem('history')) || [];
 const displayChar = $('#character-display');
 const movieBtnEl = document.getElementById('movieBtn');
 const clearHistBtn = document.getElementById('clearHistoryBtn');
 const clearHistDiv = document.getElementById('clear-history');
+
 
 function fetchComics(ID) {
   let comicId = ID;
@@ -45,9 +46,8 @@ function fetchMarvel(event) {
         console.log(characterData);
         // check if user's input can be save in local storage
         if (characterData.data.results.length !== 0){
-          heroes.push(heroName)
-          localStorage.setItem("heroArr", JSON.stringify(heroes))
-          buildMenu()
+          history.push( { description: heroName })
+          buildHistory()
         }
 
         // append character's name, thumbnail, and description
@@ -75,31 +75,29 @@ function fetchMarvel(event) {
           fetchComics(comicID);
           
         }
-        displayButton();
-        clearHistory();
+        displayMovieRedirectButton();
+        displayClearHistoryButton();
         
       });
 }
-function buildMenu() {
-  $(".search-list").remove()
-  var heroArr = JSON.parse(localStorage.getItem("heroArr"));
-  console.log(heroArr);
-  
-  for (var i = 0; i < heroArr.length; i++) {
-    var li = $("<li>").addClass('search-list').text(heroArr[i])
-    
+//Builds the history block
+function buildHistory() {
+  $(".search-history").empty()
+  history.forEach(h => {
+    let li = $("<li>").text(h.description)
     $(".search-history").append(li)
-  }
+  })
 }
-
-function clearHistory () {
+//displays the clear history button and clears the history array
+function displayClearHistoryButton () {
   clearHistDiv.style.display = 'block';
   clearHistBtn.onclick = function () {
-    heroes = [];
+    history = [];
+    buildHistory()
   }
 }
 //displays redirect btn
-function displayButton() {
+function displayMovieRedirectButton() {
   //displays the button
   redirectBtn.style.display = 'block';
 
