@@ -97,6 +97,7 @@ function clearHistory () {
   clearHistDiv.style.display = 'block';
   clearHistBtn.onclick = function () {
     heroes = [];
+    $(".search-list").remove()
   }
 }
 //displays redirect btn
