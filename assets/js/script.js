@@ -86,10 +86,11 @@ function fetchMarvel(heroName) {
 function buildHistory() {
   $(".search-history").empty();
   history.forEach((h) => {
-    let li = $("<li>").text(h.description);
+    let li = $("<li>").addClass("button is-light is-fullwidth").text(h.description);
     //when clicking on one of the characters in the history it searches that character
     li.click(function (event) {
       event.preventDefault();
+      displayChar.empty();
       fetchMarvel(event.target.textContent);
     });
     $(".search-history").append(li);
@@ -118,6 +119,7 @@ function displayMovieRedirectButton() {
 function searchBtnHandler(event) {
   event.preventDefault();
   let heroName = $("#character-input").val();
+  displayChar.empty();
   fetchMarvel(heroName);
 }
 // Invoke on load, render search history
