@@ -49,7 +49,8 @@ function fetchMarvel(event) {
           localStorage.setItem("heroArr", JSON.stringify(heroes))
           buildMenu()
         }
-
+        // remove previous search's rendering
+        displayChar.empty();
         // append character's name, thumbnail, and description
         let results = characterData.data.results[0];
         let character = results.name;
@@ -83,7 +84,6 @@ function fetchMarvel(event) {
 function buildMenu() {
   $(".search-list").remove()
   var heroArr = JSON.parse(localStorage.getItem("heroArr"));
-  console.log(heroArr);
   
   for (var i = 0; i < heroArr.length; i++) {
     var li = $("<li>").addClass('search-list').text(heroArr[i])
@@ -91,6 +91,7 @@ function buildMenu() {
     $(".search-history").append(li)
   }
 }
+buildMenu();
 
 function clearHistory () {
   clearHistDiv.style.display = 'block';
