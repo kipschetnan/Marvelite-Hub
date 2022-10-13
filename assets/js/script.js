@@ -28,8 +28,6 @@ function fetchComics(ID) {
 }
 // fetch character and subdomain
 function fetchMarvel(heroName) {
-
-  console.log('Event is', event)
   
   //let heroName = $('#character-input').val();
   
