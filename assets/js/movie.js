@@ -1,6 +1,6 @@
 // Global variables
 const APIKey2 = '5cf37e04';
-
+const goBack = $("#go-back");
 //fetch movie info
 function fetchOMDB() {
 
@@ -30,4 +30,8 @@ function fetchOMDB() {
       });
 }
 
+function goBackButton() {
+  location.href = "index.html";
+}
+goBack.on('click', goBackButton);
 $(document).ready(fetchOMDB);
