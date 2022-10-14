@@ -24,18 +24,25 @@ function fetchComics(ID) {
         return;
       }
       console.log(comicData);
-      let comicResult = comicData.data.result[0];
+      let comicResult = comicData.data.results[0];
+      let comicId = comicResult.id;
       let coverImage = comicResult.thumbnail;
       let comicTitle = comicResult.title;
       let sypnosis = comicResult.description;
       let creator = comicResult.creators.items
       let characters = comicResult.characters.items;
       let numberOfPage = comicResult.pageCount;
-      let price = comicResult.prices[1].price;
+      let price = comicResult.prices;
       let comicURL = comicResult.urls[0].url
-
-      // <i class="fas fa-angle-down" aria-hidden="true"></i>
-
+      // create card
+      let cardDiv = $('<div class="card column is-one-third">');
+      // // card-image inside card
+      let cardImg = $(`<div class="card-image"><figure id="${comicId}" class="image is-2by3"></div>`);
+      let figureEl = $(`#${comicId}`);
+      let imgEl = $(`<img src='${coverImage.path}/portrait_incredible.${coverImage.extension}'>`);
+      comicsList.append(cardDiv);
+      figureEl.append(imgEl);
+      cardDiv.append(cardImg);
     });
 }
 // fetch character and subdomain
@@ -83,7 +90,7 @@ function fetchMarvel(heroName) {
       displayChar.append(thumbnail);
       displayChar.append(description);
       // Gather data of the first 10 comics
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 9; i++) {
         // get comic IDs
         let comics = results.comics.items;
         let resourceURI = comics[i].resourceURI;
@@ -105,6 +112,7 @@ function buildHistory() {
     li.click(function (event) {
       event.preventDefault();
       displayChar.empty();
+      comicsList.empty();
       fetchMarvel(event.target.textContent);
     });
     $(".search-history").append(li);
@@ -134,6 +142,7 @@ function searchBtnHandler(event) {
   event.preventDefault();
   let heroName = $("#character-input").val();
   displayChar.empty();
+  comicsList.empty();
   fetchMarvel(heroName);
 }
 // Invoke on load, render search history
