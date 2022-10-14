@@ -12,7 +12,25 @@ body {
     margin-top: 30px;
 }
 
+#movie-display div {
+    flex: 20%;
+    padding: 10px;
+}
+
+#movie-display-2 div {
+    flex: 20%;
+    padding: 10px;
+}
+
 #movie-display {
-    display: inline-block;
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: solid black 5px;
+    padding-bottom: 15px;
+}
+
+#movie-display-2 {
+    display: flex;
+    margin-top: 20px;
 }
 
