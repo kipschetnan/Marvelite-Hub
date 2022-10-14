@@ -4,7 +4,10 @@ const goBack = $("#go-back");
 //fetch movie info
 function fetchOMDB() {
 
-    characterURL = 'http://www.omdbapi.com/?apikey=' + APIKey2 + '&s=thor';
+    const urlParams = new URLSearchParams(window.location.search);
+    let characterName = urlParams.get("hero");
+    console.log(characterName);
+    characterURL = 'http://www.omdbapi.com/?apikey=' + APIKey2 + '&s=' + characterName;
     fetch(characterURL)
       .then(function (response) {
         return response.json();
