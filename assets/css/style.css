@@ -1,17 +1,24 @@
 body {
     background-color: blanchedalmond;
-    min-height: 700px;
-    background-image: url("https://source.unsplash.com/1600x900/?marvel")
+    min-height: 1000px;
     
 }
+
 
 .titleContainer {
     background-color: brown;
     padding-bottom: 20px;
+    background-image: url(/assets/images/download-2.jpg);
+    
 }
+
 .customTitle {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Maven Pro', sans-serif;
     margin-top: 30px;
+    background: #000000d0;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .search {
@@ -58,7 +65,28 @@ body {
  #clearHistoryBtn {
     font-weight: bold;
  }
- .button{
-    background-color: red;
-    color: white
+
+
+ .character-desc{
+    background: #000000d0;
+    color: white;
+    padding: 1em;
+    border-radius: 30px;
+ }
+
+
+ .history{
+    background: #000000d0;
+    color: white;
+    border-radius: 10px;
+    margin-left: 25px;
+ }
+ /* .character-name{
+    background: #000000d0;
+    color: white;
+    margin-left: 25px;
+ } */
+
+ .img{
+    align-items: center;
  }
