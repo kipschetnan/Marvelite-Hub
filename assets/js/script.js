@@ -5,10 +5,12 @@ const searchBtn = document.getElementById("search-btn");
 const redirectBtn = document.getElementById("redirect");
 let history = JSON.parse(localStorage.getItem("heroArr")) || [];
 const displayChar = $("#character-display");
+const comicsList = $("#comics-list");
 const movieBtnEl = document.getElementById("movieBtn");
 const clearHistBtn = document.getElementById("clearHistoryBtn");
 const clearHistDiv = document.getElementById("clear-history");
 
+// Use comics data to create a list of 10 comic
 function fetchComics(ID) {
   let comicId = ID;
   let getComicURL = `https://gateway.marvel.com:443/v1/public/comics/${comicId}?apikey=447061714da1f776acf1c2d309091175`;
@@ -22,6 +24,18 @@ function fetchComics(ID) {
         return;
       }
       console.log(comicData);
+      let comicResult = comicData.data.result[0];
+      let coverImage = comicResult.thumbnail;
+      let comicTitle = comicResult.title;
+      let sypnosis = comicResult.description;
+      let creator = comicResult.creators.items
+      let characters = comicResult.characters.items;
+      let numberOfPage = comicResult.pageCount;
+      let price = comicResult.prices[1].price;
+      let comicURL = comicResult.urls[0].url
+
+      // <i class="fas fa-angle-down" aria-hidden="true"></i>
+
     });
 }
 // fetch character and subdomain
