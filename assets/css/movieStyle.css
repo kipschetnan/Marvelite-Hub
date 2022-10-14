@@ -1,6 +1,6 @@
 body {
     background-color: blanchedalmond;
-    min-height: 700px;
+    min-height: 100%;
 }
 
 .titleContainer {
@@ -10,5 +10,9 @@ body {
 .customTitle {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 30px;
+}
+
+#movie-display {
+    display: inline-block;
 }
 
