@@ -24,25 +24,31 @@ function fetchComics(ID) {
         return;
       }
       console.log(comicData);
+      // store data in variables
       let comicResult = comicData.data.results[0];
       let comicId = comicResult.id;
       let coverImage = comicResult.thumbnail;
       let comicTitle = comicResult.title;
-      let sypnosis = comicResult.description;
-      let creator = comicResult.creators.items
-      let characters = comicResult.characters.items;
-      let numberOfPage = comicResult.pageCount;
-      let price = comicResult.prices;
-      let comicURL = comicResult.urls[0].url
+      // let sypnosis = comicResult.description;
+      // let creator = comicResult.creators.items
+      // let characters = comicResult.characters.items;
+      // let numberOfPage = comicResult.pageCount;
+      // let price = comicResult.prices;
+      // let comicURL = comicResult.urls[0].url
       // create card
-      let cardDiv = $('<div class="card column is-one-third">');
-      // // card-image inside card
+      let cardDiv = $('<div class="card column is-3">');
+      // create card-image class inside card
       let cardImg = $(`<div class="card-image"><figure id="${comicId}" class="image is-2by3"></div>`);
-      let figureEl = $(`#${comicId}`);
-      let imgEl = $(`<img src='${coverImage.path}/portrait_incredible.${coverImage.extension}'>`);
       comicsList.append(cardDiv);
-      figureEl.append(imgEl);
       cardDiv.append(cardImg);
+      let figureEl = $(`#${comicId}`);
+      let imgEl = $(`<img src='${coverImage.path}/portrait_uncanny.${coverImage.extension}'>`);
+      figureEl.append(imgEl);
+      // create card-header class inside card
+      let cardHeader = $('<header class="card-header">')
+      cardDiv.append(cardHeader);
+      let pEl = $(`<p class="card-header-title">${comicTitle}</p>`)
+      cardHeader.append(pEl);
     });
 }
 // fetch character and subdomain
@@ -81,7 +87,8 @@ function fetchMarvel(heroName) {
       let imageExtension = results.thumbnail.extension;
       let imageSrc = `${imagePath}/portrait_xlarge.${imageExtension}`;
       let characterName = $('<p class="character-name">' + character + "</p>");
-      let thumbnail = $(`<img src=${imageSrc}>`);
+      let charURL = results.urls[0].url;
+      let thumbnail = $(`<a target="blank" href=${charURL}><img src=${imageSrc}>`);
       let description = $(
         '<p class="character-desc">' + charDescription + "</p>"
       );
