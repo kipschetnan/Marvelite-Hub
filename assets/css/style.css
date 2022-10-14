@@ -1,6 +1,8 @@
 body {
     background-color: blanchedalmond;
     min-height: 700px;
+    background-image: url("https://source.unsplash.com/1600x900/?marvel")
+    
 }
 
 .titleContainer {
@@ -48,11 +50,15 @@ body {
     margin-right: 2%;
 }
  #clear-history {
-    display: none;
+    
     margin-left: 15px;
     margin-top: 10px;
  }
 
  #clearHistoryBtn {
     font-weight: bold;
+ }
+ .button{
+    background-color: red;
+    color: white
  }
