@@ -1,6 +1,5 @@
 // Global variables
 const APIKey2 = '5cf37e04';
-const movieDisp = $("#movie-display");
 
 //fetch movie info
 function fetchOMDB() {
@@ -24,9 +23,9 @@ function fetchOMDB() {
           var imageSrc = $(`<img src=${posterPath}>`);
           var title = $('<p class="title">' + movieTitle + '</p>');
           var year = $('<p> Movie Released: ' + movieYear + '</p>');
-          movieDisp.append(imageSrc);
-          movieDisp.append(title);
-          movieDisp.append(year);
+          $("#div" + i).append(imageSrc);
+          $("#div" + i).append(title);
+          $("#div" + i).append(year);
         }
       });
 }
