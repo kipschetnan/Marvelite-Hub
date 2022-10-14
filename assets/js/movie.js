@@ -7,7 +7,7 @@ function fetchOMDB() {
     const urlParams = new URLSearchParams(window.location.search);
     let characterName = urlParams.get("hero");
     console.log(characterName);
-    characterURL = 'http://www.omdbapi.com/?apikey=' + APIKey2 + '&s=' + characterName;
+    characterURL = 'https://www.omdbapi.com/?apikey=' + APIKey2 + '&s=' + characterName;
     fetch(characterURL)
       .then(function (response) {
         return response.json();
