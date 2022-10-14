@@ -99,7 +99,7 @@ function fetchMarvel(heroName) {
         // display a list of comics
         fetchComics(comicID);
       }
-      displayMovieRedirectButton();
+      displayMovieRedirectButton(heroName);
       displayClearHistoryButton();
     });
 }
@@ -128,13 +128,12 @@ function displayClearHistoryButton() {
   };
 }
 //displays redirect btn
-function displayMovieRedirectButton() {
+function displayMovieRedirectButton(heroName) {
   //displays the button
   redirectBtn.style.display = "block";
-
   //redirects to the other html page
   movieBtnEl.onclick = function () {
-    location.href = "redirect.html";
+    location.href = "redirect.html?hero=" + heroName;
   };
 }
 
