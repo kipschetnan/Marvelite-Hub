@@ -59,10 +59,10 @@ function fetchMarvel(heroName) {
       let imagePath = results.thumbnail.path;
       let imageExtension = results.thumbnail.extension;
       let imageSrc = `${imagePath}/portrait_xlarge.${imageExtension}`;
-      let characterName = $('<p class="character-name">' + character + "</p>");
-      let thumbnail = $(`<img src=${imageSrc}>`);
+      let characterName = $('<p class="character-name" id="name-style">' + character + "</p>");
+      let thumbnail = $(`<img id="char-img" src=${imageSrc}>`);
       let description = $(
-        '<p class="character-desc">' + charDescription + "</p>"
+        '<p class="character-desc" id="desc-style">' + charDescription + "</p>"
       );
       // Append character's name, thumbnail and description on the page
       displayChar.append(characterName);
