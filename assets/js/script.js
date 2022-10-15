@@ -31,47 +31,89 @@ function fetchComics(ID) {
       let coverImage = comicResult.thumbnail;
       let comicTitle = comicResult.title;
       let sypnosis = comicResult.description;
-      let creator = comicResult.creators.items
+      let creator = comicResult.creators.items;
       let characters = comicResult.characters.items;
       let numberOfPage = comicResult.pageCount;
       let price = comicResult.prices;
-      let comicURL = comicResult.urls[0].url
+      let comicURL = comicResult.urls[0].url;
       // create card
-      let cardDiv = $(`<div class="card column is-3 js-modal-trigger" data-target="modal-js-${comicId}">`);
+      let cardDiv = $(
+        `<div class="card column is-3 js-modal-trigger" data-target="modal-js-${comicId}">`
+      );
       // create card-image class inside card
-      let cardImg = $(`<div class="card-image"><figure id="${comicId}" class="image is-2by3"></div>`);
+      let cardImg = $(
+        `<div class="card-image"><figure id="${comicId}" class="image is-2by3"></div>`
+      );
       comicsList.append(cardDiv);
       cardDiv.append(cardImg);
       let figureEl = $(`#${comicId}`);
-      let imgEl = $(`<img src='${coverImage.path}/portrait_uncanny.${coverImage.extension}'>`);
+      let imgEl = $(
+        `<img src='${coverImage.path}/portrait_uncanny.${coverImage.extension}'>`
+      );
       figureEl.append(imgEl);
       // create card-header class inside card
-      let cardHeader = $('<header class="card-header">')
+      let cardHeader = $('<header class="card-header">');
       cardDiv.append(cardHeader);
-      let pEl = $(`<p class="card-header-title">${comicTitle}</p>`)
+      let pEl = $(`<p class="card-header-title">${comicTitle}</p>`);
       cardHeader.append(pEl);
 
       // create modals
       let sectionModal = $(`<section id="modal-js-${comicId}" class="modal">`);
       modalsSection.append(sectionModal);
       let modalBackground = $('<div class="modal-background">');
-      let modalCard = $('<div class="modal-card">');
+      let modalCard = $('<div class="modal-content">');
       sectionModal.append(modalBackground);
       sectionModal.append(modalCard);
       // create content inside modals
-        // thumbnail
-      let pImageEl = $('<figure class="image is-2by3">');
-      let modalImg = $(`<img src='${coverImage.path}/portrait_uncanny.${coverImage.extension}'>`);
-      modalCard.append(pImageEl);
-      pImageEl.append(modalImg);
-        // Title
+
+      // Title
       let modalHeader = $('<div class="modal-card-head">');
       let pHeaderEl = $(`<p class="modal-card-title">${comicTitle}</p>`);
       modalCard.append(modalHeader);
       modalHeader.append(pHeaderEl);
-        // Body content
+      // Thumbnail
+      let pImageEl = $('<figure class="image is-2by3">');
+      let modalImg = $(
+        `<img src='${coverImage.path}/detail.${coverImage.extension}'>`
+      );
+      modalCard.append(pImageEl);
+      pImageEl.append(modalImg);
+      // Sypnosis
       let modalBody = $('<div class="modal-card-body">');
       modalCard.append(modalBody);
+      let descPEl = $("<p><strong>Description</strong>: " + sypnosis + "</p>");
+      modalBody.append(descPEl);
+
+      // Snippet copy from BULMA
+      // Add a click event on buttons to open a specific modal
+      (document.querySelectorAll(".js-modal-trigger") || []).forEach(
+        ($trigger) => {
+          const modal = $trigger.dataset.target;
+          const $target = document.getElementById(modal);
+
+          $trigger.addEventListener("click", () => {
+            openModal($target);
+          });
+        }
+      );
+      // Add a click event on various child elements to close the parent modal
+      (document.querySelectorAll(".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button") || [])
+        .forEach(($close) => {
+        const $target = $close.closest(".modal");
+
+        $close.addEventListener("click", () => {
+          closeModal($target);
+        });
+      });
+      // Add a keyboard event to close all modals
+      document.addEventListener("keydown", (event) => {
+        const e = event || window.event;
+
+        if (e.code === 27) {
+          // Escape key
+          closeAllModals();
+        }
+      });
     });
 }
 // fetch character and subdomain
@@ -85,15 +127,12 @@ function fetchMarvel(heroName) {
       if (characterData.code !== 200) {
         return;
       }
-      console.log(characterData);
       // check if user's input can be save in local storage
       if (characterData.data.results.length !== 0) {
         //looks to see if the hero is in the array
         findHero = history.find((e) => e.description == heroName);
-        console.log(findHero);
         //if the hero is already on the array then returns true otherwise false
         heroExists = findHero ? true : false;
-        console.log(heroExists);
         // If heroName is not existed in history array, save to local and render search list
         if (!heroExists) {
           history.push({ description: heroName });
@@ -180,47 +219,17 @@ buildHistory();
 searchBtn.addEventListener("click", searchBtnHandler);
 
 // Snippet paste from BULMA
-document.addEventListener('DOMContentLoaded', () => {
-  // Functions to open and close a modal
-  function openModal($el) {
-    $el.classList.add('is-active');
-  }
+// Functions to open and close a modal
+function openModal($el) {
+  $el.classList.add('is-active');
+}
 
-  function closeModal($el) {
-    $el.classList.remove('is-active');
-  }
+function closeModal($el) {
+  $el.classList.remove('is-active');
+}
 
-  function closeAllModals() {
-    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-      closeModal($modal);
-    });
-  }
-
-  // Add a click event on buttons to open a specific modal
-  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-    const modal = $trigger.dataset.target;
-    const $target = document.getElementById(modal);
-
-    $trigger.addEventListener('click', () => {
-      openModal($target);
-    });
+function closeAllModals() {
+  (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+    closeModal($modal);
   });
-
-  // Add a click event on various child elements to close the parent modal
-  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-    const $target = $close.closest('.modal');
-
-    $close.addEventListener('click', () => {
-      closeModal($target);
-    });
-  });
-
-  // Add a keyboard event to close all modals
-  document.addEventListener('keydown', (event) => {
-    const e = event || window.event;
-
-    if (e.code === 27) { // Escape key
-      closeAllModals();
-    }
-  });
-});
+}
