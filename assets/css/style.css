@@ -5,15 +5,16 @@ body {
 }
 
 #background-image{
-   /* height: 1000px;
-   width: 500px; */
     background-color: black;
-    background-image: url(/assets/images/45790.webp);
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  /* opacity: .2; */
+    width: 100%;
+    min-height: 1000px;
+    background-image: linear-gradient(
+      rgba(7, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+ 
+    ),
+    url("/assets/images/45790.webp");
+ 
 }
 .titleContainer {
     background-color: brown;
