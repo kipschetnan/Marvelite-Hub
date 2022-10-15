@@ -31,10 +31,8 @@ function fetchComics(ID) {
       let coverImage = comicResult.thumbnail;
       let comicTitle = comicResult.title;
       let sypnosis = comicResult.description;
-      let creator = comicResult.creators.items;
-      let characters = comicResult.characters.items;
       let numberOfPage = comicResult.pageCount;
-      let price = comicResult.prices;
+      let price = comicResult.prices[0].price;
       let comicURL = comicResult.urls[0].url;
       // create card
       let cardDiv = $(
@@ -61,28 +59,32 @@ function fetchComics(ID) {
       let sectionModal = $(`<section id="modal-js-${comicId}" class="modal">`);
       modalsSection.append(sectionModal);
       let modalBackground = $('<div class="modal-background">');
-      let modalCard = $('<div class="modal-content">');
+      let modalContent = $('<div class="modal-content">');
       sectionModal.append(modalBackground);
-      sectionModal.append(modalCard);
+      sectionModal.append(modalContent);
       // create content inside modals
 
       // Title
       let modalHeader = $('<div class="modal-card-head">');
       let pHeaderEl = $(`<p class="modal-card-title">${comicTitle}</p>`);
-      modalCard.append(modalHeader);
+      modalContent.append(modalHeader);
       modalHeader.append(pHeaderEl);
       // Thumbnail
-      let pImageEl = $('<figure class="image is-2by3">');
+      let imageFigureEl = $(`<a target="blank" href="${comicURL} class="image is-2by3">`);
       let modalImg = $(
         `<img src='${coverImage.path}/detail.${coverImage.extension}'>`
       );
-      modalCard.append(pImageEl);
-      pImageEl.append(modalImg);
-      // Sypnosis
+      modalContent.append(imageFigureEl);
+      imageFigureEl.append(modalImg);
+      // Sypnosis, Page Count, Price
       let modalBody = $('<div class="modal-card-body">');
-      modalCard.append(modalBody);
+      modalContent.append(modalBody);
       let descPEl = $("<p><strong>Description</strong>: " + sypnosis + "</p>");
       modalBody.append(descPEl);
+      let pageCountPEl = $("<p><strong>Page Count</strong>: " + numberOfPage + "</p>");
+      modalBody.append(pageCountPEl);
+      let pricePEl = $("<p><strong>Price</strong>: " + price + "</p>");
+      modalBody.append(pricePEl);
 
       // Snippet copy from BULMA
       // Add a click event on buttons to open a specific modal
