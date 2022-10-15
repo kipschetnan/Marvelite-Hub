@@ -90,3 +90,10 @@ body {
  .img{
     align-items: center;
  }
+
+ #comics-list {
+    gap: 20px
+ }
+ #comics-list {
+    justify-content: center;
+ }
