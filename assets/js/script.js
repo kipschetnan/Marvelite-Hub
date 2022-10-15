@@ -9,6 +9,7 @@ const comicsList = $("#comics-list");
 const movieBtnEl = document.getElementById("movieBtn");
 const clearHistBtn = document.getElementById("clearHistoryBtn");
 const clearHistDiv = document.getElementById("clear-history");
+const modalsSection = $('#modals');
 
 // Use comics data to create a list of 10 comic
 function fetchComics(ID) {
@@ -29,14 +30,14 @@ function fetchComics(ID) {
       let comicId = comicResult.id;
       let coverImage = comicResult.thumbnail;
       let comicTitle = comicResult.title;
-      // let sypnosis = comicResult.description;
-      // let creator = comicResult.creators.items
-      // let characters = comicResult.characters.items;
-      // let numberOfPage = comicResult.pageCount;
-      // let price = comicResult.prices;
-      // let comicURL = comicResult.urls[0].url
+      let sypnosis = comicResult.description;
+      let creator = comicResult.creators.items
+      let characters = comicResult.characters.items;
+      let numberOfPage = comicResult.pageCount;
+      let price = comicResult.prices;
+      let comicURL = comicResult.urls[0].url
       // create card
-      let cardDiv = $('<div class="card column is-3">');
+      let cardDiv = $(`<div class="card column is-3 js-modal-trigger" data-target="modal-js-${comicId}">`);
       // create card-image class inside card
       let cardImg = $(`<div class="card-image"><figure id="${comicId}" class="image is-2by3"></div>`);
       comicsList.append(cardDiv);
@@ -49,6 +50,28 @@ function fetchComics(ID) {
       cardDiv.append(cardHeader);
       let pEl = $(`<p class="card-header-title">${comicTitle}</p>`)
       cardHeader.append(pEl);
+
+      // create modals
+      let sectionModal = $(`<section id="modal-js-${comicId}" class="modal">`);
+      modalsSection.append(sectionModal);
+      let modalBackground = $('<div class="modal-background">');
+      let modalCard = $('<div class="modal-card">');
+      sectionModal.append(modalBackground);
+      sectionModal.append(modalCard);
+      // create content inside modals
+        // thumbnail
+      let pImageEl = $('<figure class="image is-2by3">');
+      let modalImg = $(`<img src='${coverImage.path}/portrait_uncanny.${coverImage.extension}'>`);
+      modalCard.append(pImageEl);
+      pImageEl.append(modalImg);
+        // Title
+      let modalHeader = $('<div class="modal-card-head">');
+      let pHeaderEl = $(`<p class="modal-card-title">${comicTitle}</p>`);
+      modalCard.append(modalHeader);
+      modalHeader.append(pHeaderEl);
+        // Body content
+      let modalBody = $('<div class="modal-card-body">');
+      modalCard.append(modalBody);
     });
 }
 // fetch character and subdomain
@@ -155,3 +178,49 @@ function searchBtnHandler(event) {
 buildHistory();
 
 searchBtn.addEventListener("click", searchBtnHandler);
+
+// Snippet paste from BULMA
+document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.code === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
