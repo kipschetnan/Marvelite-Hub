@@ -5,9 +5,11 @@ body {
 }
 
 #background-image{
+    background-repeat: no-repeat;
     background-color: black;
     width: 100%;
-    min-height: 1000px;
+    min-height: 700px;
+    background-size:contain;
     background-image: linear-gradient(
       rgba(7, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
@@ -19,7 +21,7 @@ body {
 .titleContainer {
     background-color: brown;
     padding-bottom: 20px;
-    background-image: url(/assets/images/download-2.jpg);
+    background-image: url(/Marvelite-Hub/assets/images/download-2.jpg);
     
 }
 
@@ -113,10 +115,15 @@ body {
     border-radius: 10px;
     margin-left: 25px;
  }
- /* .character-name{
-    background: #000000d0;
-    color: white;
-    margin-left: 25px;
- } */
 
- 
+ .img{
+    align-items: center;
+ }
+
+ #comics-list {
+    gap: 20px
+ }
+ #comics-list {
+    justify-content: center;
+ }
+

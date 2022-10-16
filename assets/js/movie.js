@@ -1,11 +1,13 @@
 // Global variables
 const APIKey2 = '5cf37e04';
-const movieDisp = $("#movie-display");
-
+const goBack = $("#go-back");
 //fetch movie info
 function fetchOMDB() {
 
-    characterURL = 'http://www.omdbapi.com/?apikey=' + APIKey2 + '&s=thor';
+    const urlParams = new URLSearchParams(window.location.search);
+    let characterName = urlParams.get("hero");
+    console.log(characterName);
+    characterURL = 'https://www.omdbapi.com/?apikey=' + APIKey2 + '&s=' + characterName;
     fetch(characterURL)
       .then(function (response) {
         return response.json();
@@ -24,11 +26,15 @@ function fetchOMDB() {
           var imageSrc = $(`<img src=${posterPath}>`);
           var title = $('<p class="title">' + movieTitle + '</p>');
           var year = $('<p> Movie Released: ' + movieYear + '</p>');
-          movieDisp.append(imageSrc);
-          movieDisp.append(title);
-          movieDisp.append(year);
+          $("#div" + i).append(imageSrc);
+          $("#div" + i).append(title);
+          $("#div" + i).append(year);
         }
       });
 }
 
+function goBackButton() {
+  location.href = "index.html";
+}
+goBack.on('click', goBackButton);
 $(document).ready(fetchOMDB);
