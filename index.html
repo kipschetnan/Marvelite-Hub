@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <title>Marvelite Hub</title>
@@ -20,55 +20,63 @@
         <img class="header-image">
     </header>
     <main>
-     <div id="background-image">
-        <div class="columns">
-        <section class="column is-3" >
-            <form class="search field">
-                <input id="character-input" 
-                class="input bulma-placeholder-mixin" 
-                type="text"
-                placeholder="Search for a marvel character">
-                <div class="control">
-                    <button class="button is-danger is-fullwidth" id="search-btn">
-                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path></svg>
-                    </button>
-                </div>
-            </form>
-            <hr>
-            <div>
-                <h2 class="history">History</h2>
+        <div id="background-image">
+            <div class="columns">
+                <section class="aside column is-3">
+                    <form class="search field">
+                        <input id="character-input" class="input bulma-placeholder-mixin" type="text"
+                            placeholder="Search for a marvel character">
+                        <div class="control">
+                            <button class="button is-danger is-fullwidth" id="search-btn">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
+                                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+                                        clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                        d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    <hr>
+                    <div>
+                        <h2 class="history">History</h2>
 
-                <ul class="search-history">
-                    <!-- Search history dynamically insert here -->
-                </ul>
-            </div>
+                        <ul class="search-history">
+                            <!-- Search history dynamically insert here -->
+                        </ul>
+                    </div>
 
-            <div id="clear-history">
-                    <button class="button is-small is-info is-fullwidth" id="clearHistoryBtn">Clear History</button>
-            </div>
-        </section>
+                    <div id="clear-history">
+                        <button class="button is-normal is-info is-fullwidth" id="clearHistoryBtn">Clear History</button>
+                    </div>
+                </section>
 
-        <section class="main-content column is-9">
-            <div id="character-name" class="columns">
-                <!-- character name (click event listener, direct to movies display)
+                <section class="main-content column is-9">
+                    <div id="character-name" class="columns">
+                        <!-- character name (click event listener, direct to movies display)
                     character thumbnail
                     character description
                 -->
+                    </div>
+                    <div class="columns" id="character-display">
+
+                        <!--character description-->
+                    </div>
             </div>
-            <div class="columns" id="character-display">
-                
-                <!--character description-->
-            </div>
-        </div>
             <div id="redirect">
                 <button class="button is-danger is-small  is-fullwidth" id="movieBtn">See Movies Here</button>
             </div>
-            
+            <hr>
+            <p id="comic-section">Comics</p>
+            <hr>
             <!-- List of comics -->
             <div id="comics-list" class="columns is-multiline"></div>
 
-        </section>
-    </div>
+            </section>
+        </div>
     </main>
     <section id="modals"></section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

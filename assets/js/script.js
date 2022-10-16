@@ -37,7 +37,7 @@ function fetchComics(ID) {
       let comicURL = comicResult.urls[0].url;
       // create card
       let cardDiv = $(
-        `<div class="card column is-3 js-modal-trigger" data-target="modal-js-${comicId}">`
+        `<div class="card column is-2 js-modal-trigger" data-target="modal-js-${comicId}">`
       );
       // create card-image class inside card
       let cardImg = $(
@@ -151,21 +151,16 @@ function fetchMarvel(heroName) {
       let imagePath = results.thumbnail.path;
       let imageExtension = results.thumbnail.extension;
       let imageSrc = `${imagePath}/portrait_xlarge.${imageExtension}`;
-
       let characterName = $('<p class="character-name" id="name-style">' + character + "</p>");
-      let thumbnail = $(`<img id="char-img" src=${imageSrc}>`);
-
       let charURL = results.urls[0].url;
-      
-      let description = $(
-        '<p class="character-desc">' + charDescription + "</p>"
-      );
+      let thumbnail = $(`<a id="char-atag" class="column is-4" target="blank" href="${charURL}"><img id="char-img" src=${imageSrc}>`);
+      let description = $('<p class="character-desc column is-8">' + charDescription + "</p>");
       // Append character's name, thumbnail and description on the page
       charName.append(characterName);
       displayChar.append(thumbnail);
       displayChar.append(description);
       // Gather data of the first 10 comics
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         // get comic IDs
         let comics = results.comics.items;
         let resourceURI = comics[i].resourceURI;
@@ -186,6 +181,7 @@ function buildHistory() {
     //when clicking on one of the characters in the history it searches that character
     li.click(function (event) {
       event.preventDefault();
+      charName.empty();
       displayChar.empty();
       comicsList.empty();
       fetchMarvel(event.target.textContent);
@@ -215,6 +211,7 @@ function displayMovieRedirectButton(heroName) {
 function searchBtnHandler(event) {
   event.preventDefault();
   let heroName = $("#character-input").val();
+  charName.empty();
   displayChar.empty();
   comicsList.empty();
   fetchMarvel(heroName);
