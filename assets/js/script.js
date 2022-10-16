@@ -5,6 +5,7 @@ const searchBtn = document.getElementById("search-btn");
 const redirectBtn = document.getElementById("redirect");
 let history = JSON.parse(localStorage.getItem("heroArr")) || [];
 const displayChar = $("#character-display");
+const charName= $("#character-name");
 const comicsList = $("#comics-list");
 const movieBtnEl = document.getElementById("movieBtn");
 const clearHistBtn = document.getElementById("clearHistoryBtn");
@@ -153,14 +154,14 @@ function fetchMarvel(heroName) {
 
       let characterName = $('<p class="character-name" id="name-style">' + character + "</p>");
       let thumbnail = $(`<img id="char-img" src=${imageSrc}>`);
-;
+
       let charURL = results.urls[0].url;
       
       let description = $(
-        '<p class="character-desc" id="desc-style">' + charDescription + "</p>"
+        '<p class="character-desc">' + charDescription + "</p>"
       );
       // Append character's name, thumbnail and description on the page
-      displayChar.append(characterName);
+      charName.append(characterName);
       displayChar.append(thumbnail);
       displayChar.append(description);
       // Gather data of the first 10 comics
