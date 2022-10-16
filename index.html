@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -17,11 +16,13 @@
 
 <body>
     <header class="titleContainer columns">
-        <h1 class="customTitle title column  ">MARVELITE HUB</h1>
+        <h1 class="customTitle title column ">MARVELITE HUB</h1>
         <img class="header-image">
     </header>
-    <main class="columns">
-        <section class="column is-3">
+    <main>
+     <div id="background-image">
+        <div class="columns">
+        <section class="column is-3" >
             <form class="search field">
                 <input id="character-input" 
                 class="input bulma-placeholder-mixin" 
@@ -48,20 +49,26 @@
         </section>
 
         <section class="main-content column is-9">
-            <div id="character-display">
+            <div id="character-name" class="columns">
                 <!-- character name (click event listener, direct to movies display)
                     character thumbnail
                     character description
                 -->
             </div>
-
+            <div class="columns" id="character-display">
+                
+                <!--character description-->
+            </div>
+        </div>
             <div id="redirect">
                 <button class="button is-danger is-small  is-fullwidth" id="movieBtn">See Movies Here</button>
             </div>
             
             <!-- List of comics -->
             <div id="comics-list" class="columns is-multiline"></div>
+
         </section>
+    </div>
     </main>
     <section id="modals"></section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

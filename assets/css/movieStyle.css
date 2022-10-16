@@ -6,7 +6,7 @@ body {
 .titleContainer {
     padding-bottom: 20px;
     border-bottom: solid black 5px;
-    background-image: url(/Marvelite-Hub/assets/images/download-2.jpg);
+    background-image: url(/assets/images/download-2.jpg);
 }
 .customTitle {
     font-family: 'Maven Pro', sans-serif;
