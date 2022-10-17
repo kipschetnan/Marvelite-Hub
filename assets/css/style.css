@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    min-height: 1000px;
+    min-height: 100vh;
 
 }
 
@@ -32,9 +32,12 @@ body {
     text-align: center;
 }
 
+.aside {
+    margin-left: 15px;
+}
+
 .search {
     margin-top: 40px;
-    margin-left: 10px;
     font-family: 'Maven Pro', sans-serif;
 }
 
@@ -60,19 +63,16 @@ body {
     margin-top: 10px;
     border: solid;
     text-align: center;
-    margin-left: 15px;
 }
 
 #redirect {
     display: none;
     margin-top: 25px;
-    margin-left: 75%;
-    margin-right: 2%;
+    margin-inline: auto;
+    width: 25vw;
 }
 
 #clear-history {
-
-    margin-left: 15px;
     margin-top: 10px;
 }
 
@@ -90,11 +90,18 @@ body {
 
 }
 
-#char-img {
-    height: 400px;
-    width: 300px;
+#char-atag {
+    height: 375px;
+    width: 250px;
     border-style: inset;
     border-color: black;
+}
+
+#char-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
 }
 
 #character-display {
@@ -114,11 +121,18 @@ body {
     background: #000000d0;
     color: white;
     border-radius: 10px;
-    margin-left: 25px;
 }
 
 .img {
     align-items: center;
+}
+
+#comic-section {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
 }
 
 #comics-list {
