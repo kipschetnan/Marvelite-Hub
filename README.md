@@ -21,7 +21,7 @@
 
 ## Developed By
 ### *Kip Schetnan
-### *Minh Truog
+### *Minh Truong
 ### *Seve Palattao
 ### *Kallie O'Gara
 
