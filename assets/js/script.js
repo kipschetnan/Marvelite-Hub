@@ -169,7 +169,6 @@ function fetchMarvel(heroName) {
         fetchComics(comicID);
       }
       displayMovieRedirectButton(heroName);
-      displayClearHistoryButton();
       let comicBreak = $('<hr><p>Comics</p><hr>');
       $('#comic-section').append(comicBreak);
     });
@@ -219,11 +218,6 @@ function searchBtnHandler(event) {
   $('#comic-section').empty();
   fetchMarvel(heroName);
 }
-// Invoke on load, render search history
-buildHistory();
-
-searchBtn.addEventListener("click", searchBtnHandler);
-
 // Snippet paste from BULMA
 // Functions to open and close a modal
 function openModal($el) {
@@ -239,3 +233,7 @@ function closeAllModals() {
     closeModal($modal);
   });
 }
+// Invoke on load, render search history
+buildHistory();
+displayClearHistoryButton();
+searchBtn.addEventListener("click", searchBtnHandler);
