@@ -25,7 +25,6 @@ function fetchComics(ID) {
       if (comicData.code !== 200) {
         return;
       }
-      console.log(comicData);
       // store data in variables
       let comicResult = comicData.data.results[0];
       let comicId = comicResult.id;
@@ -170,6 +169,8 @@ function fetchMarvel(heroName) {
         fetchComics(comicID);
       }
       displayMovieRedirectButton(heroName);
+      let comicBreak = $('<hr><p>Comics</p><hr>');
+      $('#comic-section').append(comicBreak);
     });
 }
 //Builds the history block
@@ -183,6 +184,7 @@ function buildHistory() {
       charName.empty();
       displayChar.empty();
       comicsList.empty();
+      $('#comic-section').empty();
       fetchMarvel(event.target.textContent);
     });
     $(".search-history").append(li);
@@ -213,6 +215,7 @@ function searchBtnHandler(event) {
   charName.empty();
   displayChar.empty();
   comicsList.empty();
+  $('#comic-section').empty();
   fetchMarvel(heroName);
 }
 // Snippet paste from BULMA
